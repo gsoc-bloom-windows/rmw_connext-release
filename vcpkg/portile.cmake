@@ -2,19 +2,13 @@ include(vcpkg_common_functions)
 
 set(VCPKG_BUILD_TYPE release)
 
-@[if git_source == 'gitlab']@
-vcpkg_from_gitlab(
-@[elif git_source == 'github']@
 vcpkg_from_github(
-@[elif git_source == 'bitbucket']@
-vcpkg_from_bitbucket(
-@[end if]@
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO @(user_name)/@(repo_name)
-    REF @(tag_name)
+    REPO gsoc-bloom-windows/rmw_connext-release
+    REF vcpkg/ros-dashing-rmw-connext-cpp_0.7.3-5_10
 )
 
-set(ROS_BASE_PATH "C:/opt/ros/@(ros_distro)")
+set(ROS_BASE_PATH "C:/opt/ros/dashing")
 file(TO_NATIVE_PATH "${ROS_BASE_PATH}" ROS_BASE_PATH)
 
 vcpkg_configure_cmake(
